@@ -2,8 +2,25 @@ import express from 'express';
 import cors from 'cors';
 import authRoutes from './routes/authRoutes.js';
 import taskRoutes from './routes/taskRoutes.js';
+import connectDB from './config/db.js'
 
 const app = express();
+
+const ensureDBConnection = async (req, res, next) => {
+  try {
+    await connectDB()
+    next()
+  } catch (error) {
+    console.error('Database connection error:', error.message)
+
+    return res.status(500).json({
+      success: false,
+      data: null,
+      message: 'Database connection failed',
+      token: null,
+    })
+  }
+}
 
 app.use(
   cors({
@@ -34,8 +51,8 @@ app.get('/api/health', (req, res) => {
   });
 });
 
-app.use('/api/auth', authRoutes);
-app.use('/api/tasks', taskRoutes);
+app.use('/api/auth', ensureDBConnection, authRoutes)
+app.use('/api/tasks', ensureDBConnection, taskRoutes)
 
 app.use((req, res) => {
   res.status(404).json({
