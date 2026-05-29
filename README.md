@@ -38,12 +38,6 @@ task-management-system/
   backend/
   frontend/
   docs/
-    postman/
-      task-management-system.postman_collection.json
-    screenshots/
-      login.png
-      register.png
-      tasks.png
   README.md
 ```
 
