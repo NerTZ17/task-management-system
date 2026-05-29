@@ -148,15 +148,3 @@ Please follow each documentation file for setup instructions:
 
 - [Backend Setup Guide](./backend/README.md)
 - [Frontend Setup Guide](./frontend/README.md)
-
-## Submission Notes
-
-Before submitting the project, make sure:
-
-- Backend can run locally without error.
-- Frontend can run locally without error.
-- MongoDB Atlas connection is configured correctly.
-- `.env` files are not committed.
-- Postman Collection is included in `docs/postman/`.
-- Screenshots are added in `docs/screenshots/` if available.
-- Demo video covers register, login, CRUD task, filter task, logout, and protected route behavior.
