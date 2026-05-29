@@ -73,22 +73,6 @@ Documentation:
 
 ## Screenshots
 
-Screenshots are optional, but recommended for the technical test submission.
-
-Place screenshot files inside:
-
-```txt
-docs/screenshots/
-```
-
-Recommended screenshots:
-
-```txt
-docs/screenshots/login.png
-docs/screenshots/register.png
-docs/screenshots/tasks.png
-```
-
 ### Login Page
 
 ![Login Page](./docs/screenshots/login.png)
@@ -104,8 +88,6 @@ docs/screenshots/tasks.png
 ### Task Modal
 
 ![Task Modal](./docs/screenshots/task-modal.png)
-
-> If screenshots are not available yet, create the `docs/screenshots` folder and add the images before final submission.
 
 ## API Documentation
 
