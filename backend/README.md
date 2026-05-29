@@ -169,7 +169,6 @@ http://localhost:5000/api
 | --- | --- | --- | --- |
 | POST | `/api/auth/register` | No | Register new user |
 | POST | `/api/auth/login` | No | Login user and return JWT token |
-| GET | `/api/auth/me` | Yes | Get authenticated user profile |
 
 ### Task Endpoints
 

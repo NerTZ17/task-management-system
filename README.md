@@ -142,3 +142,12 @@ Please follow each documentation file for setup instructions:
 
 - [Backend Setup Guide](./backend/README.md)
 - [Frontend Setup Guide](./frontend/README.md)
+
+## Run with Docker
+
+Make sure Docker Desktop is installed and running.
+
+From the root project folder:
+
+```bash
+docker compose up --build
