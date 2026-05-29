@@ -17,13 +17,16 @@ const handleLogout = () => {
 <template>
   <nav class="app-navbar">
     <div class="container app-navbar__content">
-      <div>
-        <RouterLink to="/tasks" class="app-navbar__brand">
-          TMS
-        </RouterLink>
-        <p class="app-navbar__subtitle">Task Management System</p>
-      </div>
+      <RouterLink to="/tasks" class="app-navbar__brand">
+        <img
+          src="/kanggo-full-logo.png"
+          alt="PT Kanggo"
+          class="app-navbar__logo"
+        />
 
+        <span>Test Case | TMS</span>
+      </RouterLink>
+      
       <div class="app-navbar__user">
         <span class="app-navbar__name">Hi, {{ userName }}</span>
         <button type="button" class="btn btn-outline-dark btn-sm" @click="handleLogout">

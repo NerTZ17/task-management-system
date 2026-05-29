@@ -44,12 +44,25 @@ const router = createRouter({
 router.beforeEach((to) => {
   const authStore = useAuthStore()
 
-  if (to.meta.requiresAuth && !authStore.isAuthenticated) {
-    return '/login'
+  if (to.meta.requiresAuth) {
+    if (!authStore.token) {
+      localStorage.setItem('auth_message', 'Please sign in to continue.')
+      return '/login'
+    }
+
+    const isValidSession = authStore.validateSession()
+
+    if (!isValidSession) {
+      return '/login'
+    }
   }
 
   if (to.meta.guestOnly && authStore.isAuthenticated) {
-    return '/tasks'
+    const isValidSession = authStore.validateSession()
+
+    if (isValidSession) {
+      return '/tasks'
+    }
   }
 
   return true

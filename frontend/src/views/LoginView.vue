@@ -20,6 +20,12 @@ const touched = reactive({
 
 const showPassword = ref(false)
 const serverError = ref('')
+const authMessage = localStorage.getItem('auth_message')
+
+if (authMessage) {
+  serverError.value = authMessage
+  localStorage.removeItem('auth_message')
+}
 
 const emailError = computed(() => {
   if (!touched.email) return ''
@@ -65,9 +71,19 @@ const handleSubmit = async () => {
 <template>
   <main class="auth-page">
     <section class="auth-card">
-      <div class="auth-header">
-        <div class="auth-logo">TMS</div>
-        <h1>Sign in</h1>
+      <div class="auth-header auth-header--center">
+        <div class="auth-brand-stack">
+          <img
+            src="/kanggo-full-logo.png"
+            alt="PT Kanggo"
+            class="auth-brand-logo"
+          />
+
+          <p class="auth-brand-label">Test Case | TMS</p>
+
+          <h1>Sign in</h1>
+        </div>
+
         <p>Enter your email and password to continue.</p>
       </div>
 

@@ -178,3 +178,29 @@
     font-size: 1.5rem;
   }
 }
+
+.auth-header--center {
+  text-align: center;
+}
+
+.auth-brand-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.auth-brand-logo {
+  max-width: 160px;
+  height: auto;
+  object-fit: contain;
+}
+
+.auth-brand-label {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}

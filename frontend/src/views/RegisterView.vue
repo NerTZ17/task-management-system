@@ -92,9 +92,19 @@ const handleSubmit = async () => {
 <template>
   <main class="auth-page">
     <section class="auth-card">
-      <div class="auth-header">
-        <div class="auth-logo">TMS</div>
-        <h1>Create account</h1>
+      <div class="auth-header auth-header--center">
+        <div class="auth-brand-stack">
+          <img
+            src="/kanggo-full-logo.png"
+            alt="PT Kanggo"
+            class="auth-brand-logo"
+          />
+
+          <p class="auth-brand-label">Test Case | TMS</p>
+
+          <h1>Create account</h1>
+        </div>
+
         <p>Register with your name, email, and password.</p>
       </div>
 

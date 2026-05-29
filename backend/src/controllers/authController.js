@@ -2,6 +2,8 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import User from '../models/User.js';
 
+const TOKEN_EXPIRES_IN = '60m'
+
 const generateToken = (user) => {
   return jwt.sign(
     {
@@ -10,10 +12,10 @@ const generateToken = (user) => {
     },
     process.env.JWT_SECRET,
     {
-      expiresIn: '1d',
+      expiresIn: TOKEN_EXPIRES_IN,
     },
-  );
-};
+  )
+}
 
 const formatUserResponse = (user) => {
   return {
@@ -157,15 +159,4 @@ export const login = async (req, res) => {
       token: null,
     });
   }
-};
-
-export const getMe = async (req, res) => {
-  return res.status(200).json({
-    success: true,
-    data: {
-      user: formatUserResponse(req.user),
-    },
-    message: 'Authenticated user fetched successfully',
-    token: null,
-  });
 };

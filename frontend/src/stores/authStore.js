@@ -1,6 +1,28 @@
 import { defineStore } from 'pinia'
 import api from '@/api/axios'
 
+const getTokenPayload = (token) => {
+  try {
+    const payload = token.split('.')[1]
+
+    if (!payload) return null
+
+    const base64 = payload.replace(/-/g, '+').replace(/_/g, '/')
+
+    return JSON.parse(atob(base64))
+  } catch {
+    return null
+  }
+}
+
+const isTokenExpired = (token) => {
+  const payload = getTokenPayload(token)
+
+  if (!payload?.exp) return true
+
+  return Date.now() >= payload.exp * 1000
+}
+
 export const useAuthStore = defineStore('auth', {
   state: () => ({
     user: JSON.parse(localStorage.getItem('user')) || null,
@@ -44,6 +66,7 @@ export const useAuthStore = defineStore('auth', {
 
         localStorage.setItem('token', token)
         localStorage.setItem('user', JSON.stringify(data.user))
+        localStorage.removeItem('auth_message')
 
         return response.data
       } catch (error) {
@@ -62,6 +85,25 @@ export const useAuthStore = defineStore('auth', {
 
       localStorage.removeItem('token')
       localStorage.removeItem('user')
+    },
+
+    validateSession() {
+      if (!this.token) {
+        return false
+      }
+
+      if (isTokenExpired(this.token)) {
+        this.logout()
+
+        localStorage.setItem(
+          'auth_message',
+          'Your login session has expired. Please sign in again.',
+        )
+
+        return false
+      }
+
+      return true
     },
   },
 })
