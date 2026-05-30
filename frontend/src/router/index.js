@@ -8,7 +8,7 @@ import TasksView from '@/views/TasksView.vue'
 const routes = [
   {
     path: '/',
-    redirect: '/tasks',
+    redirect: '/login',
   },
   {
     path: '/login',
